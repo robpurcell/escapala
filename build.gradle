@@ -2,13 +2,13 @@ apply plugin: 'scala'
 
 task initProject(description: 'Initialize project directory structure.') << {
     // Default package to be created in each src dir.
-    def defaultPackage = 'com/mrhaki/blog'
+    def defaultPackage = 'com/robbyp/escapala'
     
     ['java', 'scala', 'resources'].each {
         // convention.sourceSets contains the directory structure
         // for our Scala project. So we use this struture
         // and make a directory for each node.
-        convention.sourceSets.all."${it}".srcDirs*.each { dir ->
+        sourceSets*."${it}".srcDirs*.each { dir ->
             def newDir = new File(dir, defaultPackage)
             logger.info "Creating directory $newDir"  // gradle -i shows this message.
             newDir.mkdirs()  // Create dir.
