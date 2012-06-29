@@ -1,4 +1,4 @@
-usePlugin 'scala'
+apply plugin: 'scala'
 
 task initProject(description: 'Initialize project directory structure.') << {
     // Default package to be created in each src dir.
