@@ -1,9 +1,10 @@
 apply plugin: 'scala'
+apply plugin: 'idea'
 
 task initProject(description: 'Initialize project directory structure.') << {
     // Default package to be created in each src dir.
     def defaultPackage = 'com/robbyp/escapala'
-    
+
     ['java', 'scala', 'resources'].each {
         // convention.sourceSets contains the directory structure
         // for our Scala project. So we use this struture
@@ -14,4 +15,32 @@ task initProject(description: 'Initialize project directory structure.') << {
             newDir.mkdirs()  // Create dir.
         }
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+}
+
+sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Libraries needed to run the scala tools
+    scalaTools 'org.scala-lang:scala-compiler:2.9.2'
+    scalaTools 'org.scala-lang:scala-library:2.9.2'
+
+    // Libraries needed for scala api
+    compile 'org.scala-lang:scala-library:2.9.2'
+
+//    cucumberRuntime files("${jar.archivePath}")
+
+    testCompile 'junit:junit:4.10'
+    testCompile 'info.cukes:cucumber-core:1.0.9'
+    testCompile 'info.cukes:cucumber-java:1.0.9'
+    testCompile 'info.cukes:cucumber-junit:1.0.9'
+    testCompile 'info.cukes:cucumber-scala:1.0.9'
+
 }

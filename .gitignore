@@ -1,1 +1,8 @@
 /.gradle
+/.idea
+/build
+/out
+/target
+escapala.iml
+escapala.ipr
+escapala.iws
