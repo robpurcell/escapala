@@ -35,8 +35,6 @@ dependencies {
     // Libraries needed for scala api
     compile 'org.scala-lang:scala-library:2.9.2'
 
-//    cucumberRuntime files("${jar.archivePath}")
-
     testCompile 'junit:junit:4.10'
     testCompile 'info.cukes:cucumber-core:1.0.9'
     testCompile 'info.cukes:cucumber-java:1.0.9'
